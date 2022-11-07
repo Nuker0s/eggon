@@ -6,6 +6,13 @@ public class playermovement : MonoBehaviour
 {
     public Rigidbody rb;
     public float speed = 5f;
+    public PlayerInput pinput;
+    public InputAction move;
+    public Transform orient;
+    private void Awake()
+    {
+        move = pinput.actions.FindAction("move");
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +31,8 @@ public class playermovement : MonoBehaviour
     
     public void Movement()
     {
-        rb.AddTorque(new Vector3(0,speed,0)*Time.deltaTime);
+        Vector2 dir = move.ReadValue<Vector2>();
+        rb.AddTorque((this.orient.right * dir.y + this.orient.forward* -dir.x)*speed* Time.deltaTime);
     }
 
 }

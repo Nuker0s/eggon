@@ -5,9 +5,10 @@ using UnityEngine.InputSystem;
 
 public class cam3d : MonoBehaviour
 {
+    public Transform target;
     public Transform horizontaldrive;
     public Transform verticaldrive;
-    public Transform caster;
+    //public Transform caster;
     public PlayerInput pinput;
     public InputAction look;
     public float sense;
@@ -15,6 +16,7 @@ public class cam3d : MonoBehaviour
     public float cameradistance;
     public LayerMask WhatisGround;
     public Vector3 camerapos;
+
     private void Awake()
     {
         //cameradistance = transform.localPosition.z;
@@ -27,11 +29,12 @@ public class cam3d : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(caster.position, -caster.forward);
+        //Gizmos.DrawRay(caster.position, -caster.forward);
     }
     // Update is called once per frame
     void Update()
     {
+        horizontaldrive.position = target.position;
         /*RaycastHit wallcheck;
         Physics.Raycast(caster.position, -caster.forward,out wallcheck, cameradistance, WhatisGround);
         if (wallcheck.point!=null)
