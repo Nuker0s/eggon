@@ -9,6 +9,7 @@ public class playermovement : MonoBehaviour
     public PlayerInput pinput;
     public InputAction move;
     public Transform orient;
+    public float maxturn;
     private void Awake()
     {
         move = pinput.actions.FindAction("move");
@@ -27,6 +28,7 @@ public class playermovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        speedcontroll();
     }
     
     public void Movement()
@@ -34,5 +36,8 @@ public class playermovement : MonoBehaviour
         Vector2 dir = move.ReadValue<Vector2>();
         rb.AddTorque((this.orient.right * dir.y + this.orient.forward* -dir.x)*speed* Time.deltaTime);
     }
-
+    public void speedcontroll()
+    {
+        Vector3 angvel = rb.angularVelocity;
+    }
 }
