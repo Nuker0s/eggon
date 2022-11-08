@@ -39,5 +39,9 @@ public class playermovement : MonoBehaviour
     public void speedcontroll()
     {
         Vector3 angvel = rb.angularVelocity;
+        if (angvel.magnitude>maxturn)
+        {
+            rb.angularVelocity = angvel.normalized * maxturn;
+        }
     }
 }
