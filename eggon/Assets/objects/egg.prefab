@@ -767,7 +767,6 @@ GameObject:
   - component: {fileID: 2945944546054436578}
   - component: {fileID: 1135588233}
   - component: {fileID: 1135588234}
-  - component: {fileID: 2852696623017527368}
   m_Layer: 7
   m_Name: egg
   m_TagString: Untagged
@@ -949,18 +948,6 @@ MonoBehaviour:
   dmgoffset: 7
   dmgpower: 3.5
   pman: {fileID: 0}
---- !u!114 &2852696623017527368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2114110124720436469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7414d36b4b6a4d408facdd660825c48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2135815209691867739
 GameObject:
   m_ObjectHideFlags: 0
