@@ -14,10 +14,11 @@ public class playermanager : MonoBehaviour
     public cam3d camscript;
     public PlayerInput pinput;
     public InputAction restart;
-    public List<Transform> checkpoints;
-    public Transform currentcheckpoint;
+    public List<checkpoint> checkpoints;
+    public checkpoint currentcheckpoint;
     public bool dead;
-
+    public bool drawcheckpoints;
+    public Color checkpointscolor;
     private void Awake()
     {
         currentcheckpoint = checkpoints[0];
@@ -32,6 +33,9 @@ public class playermanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        checkpointchecker();
+
         if (restart.WasPressedThisFrame())
         {
             if (!dead)
@@ -75,10 +79,36 @@ public class playermanager : MonoBehaviour
     }
     public void spawnplayer() 
     {
-        egg = Instantiate(eggprefab, currentcheckpoint.position, new Quaternion(0, 0, 0, 0));
+        egg = Instantiate(eggprefab, currentcheckpoint.transform.position+currentcheckpoint.position, new Quaternion(0, 0, 0, 0));
         shellparent = egg.transform.GetChild(0);
         egg.GetComponent<playermovement>().orient = cam.transform;
         egg.GetComponent<egghealth>().pman = this;
         camscript.target = egg.transform;
+    }
+    public void checkpointchecker()
+    {
+        if (egg != null)
+        {
+            foreach (checkpoint cp in checkpoints)
+            {
+                if (new Bounds(cp.transform.position, cp.transform.localScale).Contains(egg.transform.position))
+                {
+                    currentcheckpoint = cp;
+                }
+            }
+        }
+    }
+    public void OnDrawGizmos()
+    {
+        if (drawcheckpoints)
+        {
+            foreach (checkpoint cp in checkpoints)
+            {
+                Gizmos.color = checkpointscolor;
+                Gizmos.DrawCube(cp.transform.position, cp.transform.localScale);
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(cp.transform.position + cp.position, 0.3f);
+            }
+        }
     }
 }

@@ -44,3 +44,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2b505b293c3d94c9fb81c28f8dd9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eggprefab: {fileID: 0}
+  yolkprefab: {fileID: 0}
+  explosionforce: 0
+  thatwhitestuffprefab: {fileID: 0}
+  shellparent: {fileID: 0}
+  egg: {fileID: 0}
+  cam: {fileID: 0}
+  camscript: {fileID: 0}
+  pinput: {fileID: 0}
+  restart:
+    m_Name: Restart
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 107f6df7-eb45-4cc0-978a-dca4562bbb6c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  checkpoints: []
+  currentcheckpoint: {fileID: 0}
+  dead: 0
+  drawcheckpoints: 0
+  checkpointscolor: {r: 0, g: 0, b: 0, a: 0}
