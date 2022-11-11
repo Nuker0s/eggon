@@ -245,7 +245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &961244529749508322
 Transform:
   m_ObjectHideFlags: 0
@@ -939,26 +939,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e320b07e90166264491dbfd50cfe852a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eggprefab: {fileID: 2114110124720436469}
-  yolkprefab: {fileID: 7800349869981137568, guid: 9e64f2326a7b4cb41ab91bef113fae4f,
-    type: 3}
-  thatwhitestuffprefab: {fileID: 7905270251408944846, guid: a4a39072f85a8e64fa88ea203642af72,
-    type: 3}
-  shellparentobj: {fileID: 440462580116462168}
-  shellparent: {fileID: 961244529749508322}
-  pinput: {fileID: 1135588233}
-  restart:
-    m_Name: Restart
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: ed98537e-7c49-4211-afb4-8c458fae1a32
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  cam: {fileID: 0}
-  checkpoint: {x: 3.03, y: 32.35, z: -8.64}
-  dead: 0
+  hp: 100
+  tollerance: 7
+  dmgoffset: 6
+  dmgpower: 4.5
+  pman: {fileID: 0}
 --- !u!1 &2135815209691867739
 GameObject:
   m_ObjectHideFlags: 0
