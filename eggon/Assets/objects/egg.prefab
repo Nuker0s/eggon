@@ -870,7 +870,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &2945944546054436578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,6 +897,10 @@ MonoBehaviour:
     m_Flags: 0
   orient: {fileID: 0}
   maxturnspeed: 5
+  defaultdrag: 1
+  isonstickysurface: 0
+  stickymaterial: {fileID: 13400000, guid: c01052ab3bb47e048bc52dd02dfc0e88, type: 2}
+  matlist: []
 --- !u!114 &1135588233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,9 +945,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  tollerance: 7
-  dmgoffset: 6
-  dmgpower: 4.5
+  tollerance: 8
+  dmgoffset: 7
+  dmgpower: 3.5
   pman: {fileID: 0}
 --- !u!114 &2852696623017527368
 MonoBehaviour:

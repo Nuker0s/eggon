@@ -18,14 +18,14 @@ public class egghealth : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         float impulse = collision.impulse.magnitude;
-        Debug.Log(impulse);
+       //Debug.Log(impulse);
         if(impulse>tollerance)
         {
             float damage = Mathf.Pow((impulse - dmgoffset), dmgpower);
             if ((hp - damage) <= 0)
             {
                 
-                Debug.Log("death");
+               // Debug.Log("death");
                 pman.death(collision.GetContact(0).point);
             }
             else hp -= damage;

@@ -57,7 +57,7 @@ public class playermanager : MonoBehaviour
         Vector3 deathpoint = egg.transform.position;
         if (deathpos==new Vector3(0,0,0))
         {
-            deathpoint = deathpos;
+            deathpoint = egg.transform.position;
         }
         shellparent.parent = null;
         shellparent.gameObject.SetActive(true);
