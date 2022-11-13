@@ -767,6 +767,7 @@ GameObject:
   - component: {fileID: 2945944546054436578}
   - component: {fileID: 1135588233}
   - component: {fileID: 1135588234}
+  - component: {fileID: 1676179651}
   m_Layer: 7
   m_Name: egg
   m_TagString: Untagged
@@ -948,6 +949,30 @@ MonoBehaviour:
   dmgoffset: 7
   dmgpower: 3.5
   pman: {fileID: 0}
+--- !u!114 &1676179651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114110124720436469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7414d36b4b6a4d408facdd660825c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinput: {fileID: 1135588233}
+  fire:
+    m_Name: Fire
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e2f49be1-7142-4e6c-b961-b194158ccd14
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  fired: 0
+  catched: 0
 --- !u!1 &2135815209691867739
 GameObject:
   m_ObjectHideFlags: 0
