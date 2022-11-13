@@ -6,17 +6,22 @@ public class playermovement : MonoBehaviour
 {
     public Rigidbody rb;
     public float force = 5f;
+    public float skyforce = 5f;
     public PlayerInput pinput;
     public InputAction move;
+    public InputAction jump;
     public Transform orient;
     public float maxturnspeed;
     public float defaultdrag = 1f;
     public bool isonstickysurface;
     public PhysicMaterial stickymaterial;
     public List<string> matlist;
+    public bool grounded;
+    public float jumpforce;
     private void Awake()
     {
         move = pinput.actions.FindAction("move");
+        jump = pinput.actions.FindAction("jump");
     }
     // Start is called before the first frame update
     void Start()
@@ -27,7 +32,10 @@ public class playermovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (jump.WasPressedThisFrame() & grounded)
+        {
+            rb.AddForce(0, jumpforce, 0);
+        }
     }
     private void FixedUpdate()
     {
@@ -37,14 +45,17 @@ public class playermovement : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         collioncheck(collision);
+        grounded = false;
     }
     private void OnCollisionEnter(Collision collision)
     {
+        grounded = true;
         collioncheck(collision);
     }
     private void OnCollisionStay(Collision collision)
     {
         collioncheck(collision);
+        grounded = true;
         /*Debug.Log(collision.collider.tag);
         if (collision.collider.tag=="sticky")
         {
@@ -57,7 +68,16 @@ public class playermovement : MonoBehaviour
     public void Movement()
     {
         Vector2 dir = move.ReadValue<Vector2>();
-        rb.AddTorque((this.orient.right * dir.y + this.orient.forward* -dir.x)*force* Time.deltaTime);
+        if (grounded)
+        {
+            
+            rb.AddTorque((orient.right * dir.y + orient.forward * -dir.x) * force * Time.deltaTime);
+        }
+        else 
+        {
+            rb.AddForce((orient.right * dir.y + orient.forward * -dir.x) * skyforce * Time.deltaTime);
+        }
+        
     }
     public void speedcontroll()
     {

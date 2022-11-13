@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class cam3d : MonoBehaviour
 {
@@ -16,7 +17,12 @@ public class cam3d : MonoBehaviour
     public float cameradistance;
     public LayerMask WhatisGround;
     public Vector3 camerapos;
-
+    public LayerMask layer;
+    public Image cel;
+    public float grapdist;
+    public Color defaultcolor = Color.white;
+    public Color nienienie = Color.black;
+    
     private void Awake()
     {
         //cameradistance = transform.localPosition.z;
@@ -59,5 +65,11 @@ public class cam3d : MonoBehaviour
             xrot = Mathf.Max(xrot, minmaxXangle.y);
         }
         verticaldrive.eulerAngles = new Vector3(xrot, verticaldrive.eulerAngles.y, verticaldrive.eulerAngles.z);
+        if (Physics.Raycast(transform.position, transform.forward, grapdist, layer))
+        {
+            cel.color = defaultcolor;
+        }
+        else cel.color = nienienie;
+        
     }
 }

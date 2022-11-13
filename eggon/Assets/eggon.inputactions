@@ -17,8 +17,8 @@
                 {
                     "name": "Look",
                     "type": "Value",
-                    "id": "0eba31b0-f610-48f8-a357-b8b6475cb606",
-                    "expectedControlType": "Vector2",
+                    "id": "e332da46-b838-49f0-907f-fa40966b37e8",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -36,6 +36,15 @@
                     "name": "restart",
                     "type": "Button",
                     "id": "d3631b1d-09f1-45f3-8d54-e18ffa31bbe6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "jump",
+                    "type": "Button",
+                    "id": "44ef4d4c-90ae-43f8-999c-f7f55d9756d1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -271,6 +280,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6eebe01d-cf99-41c5-9cf9-fae242a5db27",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
