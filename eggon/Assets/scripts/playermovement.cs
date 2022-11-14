@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+
 public class playermovement : MonoBehaviour
 {
     public Rigidbody rb;
@@ -18,6 +20,7 @@ public class playermovement : MonoBehaviour
     public List<string> matlist;
     public bool grounded;
     public float jumpforce;
+
     private void Awake()
     {
         move = pinput.actions.FindAction("move");
@@ -26,15 +29,17 @@ public class playermovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector2 dir = move.ReadValue<Vector2>();
         if (jump.WasPressedThisFrame() & grounded)
         {
             rb.AddForce(0, jumpforce, 0);
+            //rb.AddForce(new Vector3(0,jumpforce,0) + (orient.right * dir.x + orient.forward * dir.y) * skyforce);
         }
     }
     private void FixedUpdate()
@@ -75,7 +80,7 @@ public class playermovement : MonoBehaviour
         }
         else 
         {
-            rb.AddForce((orient.right * dir.y + orient.forward * -dir.x) * skyforce * Time.deltaTime);
+            rb.AddForce((orient.right * dir.x + orient.forward * dir.y) * skyforce * Time.deltaTime);
         }
         
     }

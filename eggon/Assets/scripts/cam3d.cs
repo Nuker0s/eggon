@@ -22,11 +22,12 @@ public class cam3d : MonoBehaviour
     public float grapdist;
     public Color defaultcolor = Color.white;
     public Color nienienie = Color.black;
-    
+    private Mouse ms;
     private void Awake()
     {
         //cameradistance = transform.localPosition.z;
         look = pinput.actions.FindAction("Look");
+        ms = InputSystem.GetDevice<Mouse>();
     }
     // Start is called before the first frame update
     void Start()
@@ -51,7 +52,7 @@ public class cam3d : MonoBehaviour
         {
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.x, cameradistance);
         }*/
-        Vector2 camrot = look.ReadValue<Vector2>();
+        Vector2 camrot = ms.delta.ReadValue();
         horizontaldrive.Rotate(0, camrot.x * sense, 0);
         //Debug.Log(camrot.x * sense);
         float xrot = verticaldrive.eulerAngles.x + camrot.y * -sense;

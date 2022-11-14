@@ -886,7 +886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6656231343384083800}
   force: 300
-  skyforce: 30
+  skyforce: 150
   pinput: {fileID: 1135588233}
   move:
     m_Name: Move
