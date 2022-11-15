@@ -19,6 +19,9 @@ public class playermanager : MonoBehaviour
     public bool dead;
     public bool drawcheckpoints;
     public Color checkpointscolor;
+    public float expforce;
+    public List<GameObject> shells;
+    public int maxshells;
     private void Awake()
     {
         currentcheckpoint = checkpoints[0];
@@ -54,24 +57,31 @@ public class playermanager : MonoBehaviour
     }
     public void death(Vector3 deathpos)
     {
-        Vector3 deathpoint = egg.transform.position;
-        if (deathpos==new Vector3(0,0,0))
+        Vector3 deathpoint = deathpos;
+        if (deathpoint==new Vector3(0,0,0))
         {
             deathpoint = egg.transform.position;
         }
         shellparent.parent = null;
         shellparent.gameObject.SetActive(true);
+        shells.Add(shellparent.gameObject);
+        if (shells.Count>maxshells)
+        {
+            Destroy(shells[0]);
+            shells.RemoveAt(0);
+        }
         Rigidbody eggrb = egg.GetComponent<Rigidbody>();
         for (int i = 0; i < shellparent.childCount; i++)
         {
             Rigidbody rb = shellparent.GetChild(i).GetComponent<Rigidbody>();
             rb.isKinematic = false;
-            //rb.velocity = eggrb.velocity;
+            rb.velocity = eggrb.velocity*0.5f;
             rb.angularVelocity = eggrb.angularVelocity;
+            rb.AddExplosionForce(expforce, deathpoint, 1);
         }
         dead = true;
-        camscript.target = Instantiate(yolkprefab, deathpos, new Quaternion(0, 0, 0, 0)).transform;
-        Instantiate(thatwhitestuffprefab, deathpos, Quaternion.Euler(-90,0,0));
+        camscript.target = Instantiate(yolkprefab, deathpoint, new Quaternion(0, 0, 0, 0)).transform;
+        Instantiate(thatwhitestuffprefab, deathpoint, Quaternion.Euler(-90,0,0));
         Destroy(egg);
     }
     public void respawn()

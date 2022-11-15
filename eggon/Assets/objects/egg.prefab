@@ -958,7 +958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  tollerance: 8
+  tollerance: 7.3
   dmgoffset: 7
   dmgpower: 3.5
   pman: {fileID: 0}
