@@ -61,10 +61,13 @@ public class playermanager : MonoBehaviour
         }
         shellparent.parent = null;
         shellparent.gameObject.SetActive(true);
+        Rigidbody eggrb = egg.GetComponent<Rigidbody>();
         for (int i = 0; i < shellparent.childCount; i++)
         {
             Rigidbody rb = shellparent.GetChild(i).GetComponent<Rigidbody>();
             rb.isKinematic = false;
+            //rb.velocity = eggrb.velocity;
+            rb.angularVelocity = eggrb.angularVelocity;
         }
         dead = true;
         camscript.target = Instantiate(yolkprefab, deathpos, new Quaternion(0, 0, 0, 0)).transform;
