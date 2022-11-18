@@ -22,21 +22,27 @@ public class playermanager : MonoBehaviour
     public float expforce;
     public List<GameObject> shells;
     public int maxshells;
+    public AudioClip deathsound;
     private void Awake()
     {
         currentcheckpoint = checkpoints[0];
         restart = pinput.actions.FindAction("restart");
+        
     }
     // Start is called before the first frame update
     void Start()
     {
+        Screen.lockCursor=true;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
         spawnplayer();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //Cursor.visible = false;
+       //Cursor.lockState = CursorLockMode.Locked;
         checkpointchecker();
 
         if (restart.WasPressedThisFrame())
@@ -57,6 +63,7 @@ public class playermanager : MonoBehaviour
     }
     public void death(Vector3 deathpos)
     {
+        onesound.playsound(egg.transform.position, deathsound, 0.4f);
         Vector3 deathpoint = deathpos;
         if (deathpoint==new Vector3(0,0,0))
         {
@@ -124,4 +131,5 @@ public class playermanager : MonoBehaviour
             }
         }
     }
+
 }

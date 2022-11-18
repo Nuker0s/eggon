@@ -15,6 +15,7 @@ public class grapple : MonoBehaviour
     public float spring;
     public float dampter;
     public LineRenderer linerend;
+    public AudioClip connectsound;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +43,9 @@ public class grapple : MonoBehaviour
                 if (Physics.Raycast(origin,dir, out hit,maxraycastdistance, layers))
                 {
                     Debug.Log("grabbbed");
+                    onesound.playsound(hit.point, connectsound, globalvariables.sfxvolume);
                     hitpos = hit.point;
-                    hookconnect(hitpos);
+                    hookconnect(hitpos,hit.rigidbody);
                     fired = true;
                 }
                 else
@@ -71,7 +73,7 @@ public class grapple : MonoBehaviour
         }
     }
 
-    public void hookconnect(Vector3 pos) 
+    public void hookconnect(Vector3 pos,Rigidbody rb) 
     {
         joint = gameObject.AddComponent<SpringJoint>();
         joint.autoConfigureConnectedAnchor = false;
@@ -80,7 +82,12 @@ public class grapple : MonoBehaviour
         joint.maxDistance = Vector3.Distance(transform.position,pos);
         joint.spring = spring;
         joint.damper = dampter;
-        Debug.Log(Vector3.Distance(transform.position, pos));
+        if (rb!=null)
+        {
+            joint.autoConfigureConnectedAnchor = true;
+            joint.connectedBody = rb;
+        }
+        //Debug.Log(Vector3.Distance(transform.position, pos));
         linerend.enabled = true;
         
 

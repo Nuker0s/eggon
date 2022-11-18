@@ -18,7 +18,7 @@ public class egghealth : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         float impulse = collision.impulse.magnitude;
-       //Debug.Log(impulse);
+        Debug.Log(impulse);
         if(impulse>tollerance)
         {
             float damage = Mathf.Pow((impulse - dmgoffset), dmgpower);

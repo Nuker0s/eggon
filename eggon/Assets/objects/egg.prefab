@@ -914,6 +914,7 @@ MonoBehaviour:
   matlist: []
   grounded: 0
   jumpforce: 300
+  pushforce: 0
 --- !u!114 &1135588233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,7 +959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  tollerance: 7.3
+  tollerance: 7.2
   dmgoffset: 7
   dmgpower: 3.5
   pman: {fileID: 0}
@@ -995,8 +996,9 @@ MonoBehaviour:
   joint: {fileID: 0}
   maxdistancejoint: 15
   spring: 10000
-  dampter: 0
+  dampter: 3000
   linerend: {fileID: 5122766095856057758}
+  connectsound: {fileID: 8300000, guid: 3d7265559587a0349b69c295d7922950, type: 3}
 --- !u!120 &5122766095856057758
 LineRenderer:
   m_ObjectHideFlags: 0

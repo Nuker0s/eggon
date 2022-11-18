@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 666538448543253645}
   - component: {fileID: 666538448543253644}
   - component: {fileID: 1685334424}
+  - component: {fileID: 2929468494051177315}
   m_Layer: 0
   m_Name: gamemanager
   m_TagString: Untagged
@@ -77,6 +78,9 @@ MonoBehaviour:
   drawcheckpoints: 0
   checkpointscolor: {r: 0.015180982, g: 0.99215686, b: 0, a: 0.5686275}
   expforce: 150
+  shells: []
+  maxshells: 3
+  deathsound: {fileID: 8300000, guid: 2b2f1b08e5dec9c439afd067483a750b, type: 3}
 --- !u!114 &1685334424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +112,15 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2929468494051177315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666538448543253647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749e2283b867f8842806c40336d1c21f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

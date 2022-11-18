@@ -20,6 +20,7 @@ public class playermovement : MonoBehaviour
     public List<string> matlist;
     public bool grounded;
     public float jumpforce;
+    public float pushforce;
 
     private void Awake()
     {
@@ -76,7 +77,8 @@ public class playermovement : MonoBehaviour
         if (grounded)
         {
             
-            rb.AddTorque((orient.right * dir.y + orient.forward * -dir.x) * force * Time.deltaTime);
+            //rb.AddTorque((orient.right * dir.y + orient.forward * -dir.x) * force * Time.deltaTime);
+            rb.AddForce((orient.right * dir.x + orient.forward * dir.y) * pushforce * Time.deltaTime);
         }
         else 
         {
@@ -86,33 +88,34 @@ public class playermovement : MonoBehaviour
     }
     public void speedcontroll()
     {
-        Vector3 angvel = rb.angularVelocity;
-        if (angvel.magnitude>maxturnspeed)
+        Vector3 angvel = rb.velocity;
+        if (angvel.magnitude > maxturnspeed)
         {
-            rb.angularVelocity = angvel.normalized * maxturnspeed;
-        }
-        /*if (isonstickysurface)
-        {
-            if (rb.velocity.y<=0)
+            rb.velocity = angvel.normalized * maxturnspeed;
+
+            angvel = rb.angularVelocity;
+            if (angvel.magnitude > maxturnspeed)
             {
-                rb.velocity = new Vector3(rb.velocity.x, 0.6f, rb.velocity.z);
+                rb.angularVelocity = angvel.normalized * maxturnspeed;
             }
-        }*/
+            /*if (isonstickysurface)
+            {
+                if (rb.velocity.y<=0)
+                {
+                    rb.velocity = new Vector3(rb.velocity.x, 0.6f, rb.velocity.z);
+                }
+            }*/
+        }
     }
-    public void collioncheck(Collision collision) 
-    {
+
+        public void collioncheck(Collision collision)
+        {
         if (collision.contactCount > 0)
         {
             rb.drag = defaultdrag;
         }
         else rb.drag = 0;
-        /*Debug.Log(collision.collider.material);
-
-        matlist.Clear();
-        for (int i = 0; i < collision.contactCount; i++)
-        {
-            matlist.Add(collision.GetContact(i).thisCollider.material);
-        }
+        Debug.Log(collision.collider.material);
 
         if (collision.collider.tag=="sticky")
         {
@@ -120,7 +123,7 @@ public class playermovement : MonoBehaviour
             isonstickysurface = true;
         }
         else isonstickysurface = false;
-        */
+       
     }
     
 }
