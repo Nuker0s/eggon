@@ -405,12 +405,6 @@ Transform:
   m_Father: {fileID: 2016062513}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &349353688 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8302951109556651452, guid: 4bfbf75ad6c63474ea42bcf94629e876,
-    type: 3}
-  m_PrefabInstance: {fileID: 8302951109352092516}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &363486328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5068,11 +5062,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: egg
       objectReference: {fileID: 0}
-    - target: {fileID: 2945944546054436578, guid: 132a646831aab8547b58b6bf5cb540b0,
+    - target: {fileID: 2114110124720436469, guid: 132a646831aab8547b58b6bf5cb540b0,
         type: 3}
-      propertyPath: orient
-      value: 
-      objectReference: {fileID: 349353688}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 132a646831aab8547b58b6bf5cb540b0, type: 3}
 --- !u!4 &996616003351449246

@@ -128,7 +128,7 @@ public class playermovement : MonoBehaviour
         if (Physics.Raycast(transform.position - new Vector3(0,2,0), Vector3.up, out hit, 30, playermask))
         {
             playerslowestpoint = hit.point;
-            Debug.Log(hit.point);
+            //Debug.Log(hit.point);
         }
         jajoextents = (meszkolider.bounds.extents * sizecol.x);
         jajoextents.y = sizecol.y;
