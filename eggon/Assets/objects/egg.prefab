@@ -907,7 +907,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   orient: {fileID: 0}
-  maxturnspeed: 5
+  maxturnspeed: 7
   defaultdrag: 1
   isonstickysurface: 0
   stickymaterial: {fileID: 13400000, guid: c01052ab3bb47e048bc52dd02dfc0e88, type: 2}
@@ -915,6 +915,17 @@ MonoBehaviour:
   grounded: 0
   jumpforce: 300
   pushforce: 0
+  playermask:
+    serializedVersion: 2
+    m_Bits: 128
+  ground:
+    serializedVersion: 2
+    m_Bits: 1
+  playerslowestpoint: {x: 0, y: 0, z: 0}
+  groundcheckhitbox: {x: 0, y: 0, z: 0}
+  jajoextents: {x: 0, y: 0, z: 0}
+  meszkolider: {fileID: 417187015982195022}
+  sizecol: {x: 1.8, y: 0.33}
 --- !u!114 &1135588233
 MonoBehaviour:
   m_ObjectHideFlags: 0
