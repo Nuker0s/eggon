@@ -2814,7 +2814,7 @@ GameObject:
   - component: {fileID: 718880498}
   - component: {fileID: 718880497}
   - component: {fileID: 718880496}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: Sphere (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7484,11 +7484,6 @@ PrefabInstance:
       propertyPath: camscript
       value: 
       objectReference: {fileID: 1298465483}
-    - target: {fileID: 666538448543253644, guid: 40e2861b7924ee744b7701e81357838d,
-        type: 3}
-      propertyPath: checkpoints.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 666538448543253644, guid: 40e2861b7924ee744b7701e81357838d,
         type: 3}
       propertyPath: checkpoints.Array.data[0]

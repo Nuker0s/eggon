@@ -73,6 +73,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   currentcheckpoint: {fileID: 0}
   dead: 0
   drawcheckpoints: 0
