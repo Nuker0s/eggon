@@ -35,12 +35,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Float: 2.02
+    - _Float: 2.83
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _size: 0.1
+    - _cell_dens: 1.52
+    - _dir: 0.015
+    - _size: 0.64
     m_Colors:
-    - _Color: {r: 0.250445, g: 0.726985, b: 0.7924528, a: 0}
+    - _Color: {r: 0.11494303, g: 0.5352837, b: 0.5943396, a: 0}
+    - _dir2: {r: 2.33, g: -3.24, b: 0, a: 0}
     - _wavescolor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &431870814741490956

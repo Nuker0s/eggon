@@ -11,11 +11,13 @@ public class grapple : MonoBehaviour
     public LayerMask layers;
     public Vector3 hitpos;
     public SpringJoint joint;
+    public Rigidbody connectedrb;
     public float maxdistancejoint;
     public float spring;
     public float dampter;
     public LineRenderer linerend;
     public AudioClip connectsound;
+    public GameObject grapplepoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,7 @@ public class grapple : MonoBehaviour
         if (fired)
         {
             linerend.SetPosition(1, transform.position);
-            linerend.SetPosition(0, joint.connectedAnchor);
+            linerend.SetPosition(0,connectedrb.transform.position);
             Debug.Log("grabb");
         }
         if (fire.WasPressedThisFrame())
@@ -45,7 +47,7 @@ public class grapple : MonoBehaviour
                     Debug.Log("grabbbed");
                     onesound.playsound(hit.point, connectsound, globalvariables.sfxvolume);
                     hitpos = hit.point;
-                    hookconnect(hitpos,hit.rigidbody);
+                    hookconnect(hitpos,hit.rigidbody,hit);
                     fired = true;
                 }
                 else
@@ -71,9 +73,14 @@ public class grapple : MonoBehaviour
             Gizmos.color = Color.cyan;
             Gizmos.DrawSphere(hitpos, 0.3f);
         }
+        if (joint!=null & connectedrb!=null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, joint.connectedAnchor+connectedrb.transform.position);
+        }
     }
 
-    public void hookconnect(Vector3 pos,Rigidbody rb) 
+    public void hookconnect(Vector3 pos,Rigidbody rb,RaycastHit hit) 
     {
         joint = gameObject.AddComponent<SpringJoint>();
         joint.autoConfigureConnectedAnchor = false;
@@ -84,8 +91,12 @@ public class grapple : MonoBehaviour
         joint.damper = dampter;
         if (rb!=null)
         {
-            joint.autoConfigureConnectedAnchor = true;
+            connectedrb = rb;
+            joint.autoConfigureConnectedAnchor = false;
             joint.connectedBody = rb;
+            joint.connectedAnchor = pos-rb.transform.position;//new Vector3(0, 0, 0);
+            joint.autoConfigureConnectedAnchor = false;
+            
         }
         //Debug.Log(Vector3.Distance(transform.position, pos));
         linerend.enabled = true;
