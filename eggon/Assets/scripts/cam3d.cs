@@ -12,6 +12,7 @@ public class cam3d : MonoBehaviour
     //public Transform caster;
     public PlayerInput pinput;
     public InputAction look;
+    public InputAction esc;
     public float sense;
     public Vector2 minmaxXangle;
     public float cameradistance;
@@ -23,16 +24,20 @@ public class cam3d : MonoBehaviour
     public Color defaultcolor = Color.white;
     public Color nienienie = Color.black;
     private Mouse ms;
+    public static bool pause=false;
+    public GameObject menu;
     private void Awake()
     {
         //cameradistance = transform.localPosition.z;
         look = pinput.actions.FindAction("Look");
         ms = InputSystem.GetDevice<Mouse>();
+        esc = pinput.actions.FindAction("Esc");
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     private void OnDrawGizmos()
     {
@@ -41,6 +46,23 @@ public class cam3d : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (esc.WasPressedThisFrame())
+        {
+            if (pause)
+            {
+                menu.SetActive(false);
+                pause = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else 
+            {
+                menu.SetActive(true);
+                pause = true;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+        }
         horizontaldrive.position = target.position;
         /*RaycastHit wallcheck;
         Physics.Raycast(caster.position, -caster.forward,out wallcheck, cameradistance, WhatisGround);

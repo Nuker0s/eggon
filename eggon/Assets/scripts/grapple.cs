@@ -31,7 +31,11 @@ public class grapple : MonoBehaviour
         if (fired)
         {
             linerend.SetPosition(1, transform.position);
-            linerend.SetPosition(0,connectedrb.transform.position);
+            if (connectedrb!=null)
+            {
+                linerend.SetPosition(0, connectedrb.transform.position);
+            }
+            linerend.SetPosition(0, hitpos);
             Debug.Log("grabb");
         }
         if (fire.WasPressedThisFrame())

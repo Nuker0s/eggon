@@ -6,7 +6,7 @@ public class levelbutton : MonoBehaviour
 {
     public scenevars scenetoload;
     // Start is called before the first frame update
-    public void sceneload() 
+    public void sceneload()
     {
         SceneManager.LoadScene(scenetoload.scenename);
     }

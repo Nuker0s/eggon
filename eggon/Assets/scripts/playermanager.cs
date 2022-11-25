@@ -14,6 +14,7 @@ public class playermanager : MonoBehaviour
     public cam3d camscript;
     public PlayerInput pinput;
     public InputAction restart;
+    public InputAction esc;
     public List<checkpoint> checkpoints;
     public checkpoint currentcheckpoint;
     public bool dead;
@@ -28,11 +29,12 @@ public class playermanager : MonoBehaviour
         currentcheckpoint = checkpoints[0];
         restart = pinput.actions.FindAction("restart");
         
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        Screen.lockCursor=true;
+        
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
         spawnplayer();
