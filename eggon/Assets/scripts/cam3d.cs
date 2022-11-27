@@ -54,6 +54,8 @@ public class cam3d : MonoBehaviour
                 pause = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                Time.timeScale = 1;
+
             }
             else 
             {
@@ -61,6 +63,7 @@ public class cam3d : MonoBehaviour
                 pause = true;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                Time.timeScale = 0;
             }
         }
         horizontaldrive.position = target.position;
@@ -74,25 +77,29 @@ public class cam3d : MonoBehaviour
         {
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.x, cameradistance);
         }*/
-        Vector2 camrot = ms.delta.ReadValue();
-        horizontaldrive.Rotate(0, camrot.x * sense, 0);
-        //Debug.Log(camrot.x * sense);
-        float xrot = verticaldrive.eulerAngles.x + camrot.y * -sense;
+        if (!pause)
+        {
+            Vector2 camrot = ms.delta.ReadValue();
+            horizontaldrive.Rotate(0, camrot.x * sense, 0);
+            //Debug.Log(camrot.x * sense);
+            float xrot = verticaldrive.eulerAngles.x + camrot.y * -sense;
 
-        if (xrot<200)
-        {
-            xrot = Mathf.Min(xrot, minmaxXangle.x);
+            if (xrot < 200)
+            {
+                xrot = Mathf.Min(xrot, minmaxXangle.x);
+            }
+            else
+            {
+                xrot = Mathf.Max(xrot, minmaxXangle.y);
+            }
+            verticaldrive.eulerAngles = new Vector3(xrot, verticaldrive.eulerAngles.y, verticaldrive.eulerAngles.z);
+            if (Physics.Raycast(transform.position, transform.forward, grapdist, layer))
+            {
+                cel.color = defaultcolor;
+            }
+            else cel.color = nienienie;
         }
-        else
-        {
-            xrot = Mathf.Max(xrot, minmaxXangle.y);
-        }
-        verticaldrive.eulerAngles = new Vector3(xrot, verticaldrive.eulerAngles.y, verticaldrive.eulerAngles.z);
-        if (Physics.Raycast(transform.position, transform.forward, grapdist, layer))
-        {
-            cel.color = defaultcolor;
-        }
-        else cel.color = nienienie;
+
         
     }
 }

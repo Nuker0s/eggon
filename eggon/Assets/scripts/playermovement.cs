@@ -116,7 +116,16 @@ public class playermovement : MonoBehaviour
         }
         else 
         {
-            rb.drag = 0;
+            if (grapple.joint!=null)
+            {
+                rb.drag = 0.5f;
+            }
+            else 
+            {
+                rb.drag = 0;
+            }
+             
+            
             grounded = false;
         }
     }

@@ -10,7 +10,7 @@ public class grapple : MonoBehaviour
     public float maxraycastdistance;
     public LayerMask layers;
     public Vector3 hitpos;
-    public SpringJoint joint;
+    public static SpringJoint joint;
     public Rigidbody connectedrb;
     public float maxdistancejoint;
     public float spring;
@@ -35,10 +35,16 @@ public class grapple : MonoBehaviour
             {
                 linerend.SetPosition(0, connectedrb.transform.position);
             }
-            linerend.SetPosition(0, hitpos);
+            else
+            {
+
+                linerend.SetPosition(0, grapplepoint.transform.position);
+                joint.connectedAnchor = grapplepoint.transform.position;
+            }
+            
             Debug.Log("grabb");
         }
-        if (fire.WasPressedThisFrame())
+        if (fire.WasPressedThisFrame() & !cam3d.pause)
         {
             if (!fired)
             {
@@ -102,6 +108,13 @@ public class grapple : MonoBehaviour
             joint.autoConfigureConnectedAnchor = false;
             
         }
+        else
+        {
+            GameObject grap = new GameObject("grapplepoint");
+            grap.transform.position = pos;
+            grapplepoint = grap;
+            grapplepoint.transform.SetParent(hit.transform);
+        }
         //Debug.Log(Vector3.Distance(transform.position, pos));
         linerend.enabled = true;
         
@@ -110,6 +123,7 @@ public class grapple : MonoBehaviour
     public void hookdisconnect()
     {
         GameObject.Destroy(joint);
+        GameObject.Destroy(grapplepoint);
         linerend.enabled = false;
     }
 }
