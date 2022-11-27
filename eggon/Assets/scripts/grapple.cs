@@ -10,14 +10,14 @@ public class grapple : MonoBehaviour
     public float maxraycastdistance;
     public LayerMask layers;
     public Vector3 hitpos;
-    public static SpringJoint joint;
+    public SpringJoint joint;
     public Rigidbody connectedrb;
     public float maxdistancejoint;
     public float spring;
     public float dampter;
     public LineRenderer linerend;
     public AudioClip connectsound;
-    public GameObject grapplepoint;
+    public static GameObject grapplepoint;
     // Start is called before the first frame update
     void Start()
     {
