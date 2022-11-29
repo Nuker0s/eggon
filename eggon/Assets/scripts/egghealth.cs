@@ -10,6 +10,7 @@ public class egghealth : MonoBehaviour
     public float dmgoffset=6;
     public float dmgpower=4.5f;
     public playermanager pman;
+    public AudioClip dmgsound;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -22,13 +23,18 @@ public class egghealth : MonoBehaviour
         if(impulse>tollerance)
         {
             float damage = Mathf.Pow((impulse - dmgoffset), dmgpower);
+
             if ((hp - damage) <= 0)
             {
-                
-               // Debug.Log("death");
+
+                // Debug.Log("death");
                 pman.death(collision.GetContact(0).point);
             }
-            else hp -= damage;
+            else 
+            { 
+                hp -= damage; 
+                onesound.playsound(collision.GetContact(0).point, dmgsound, globalvariables.sfxvolume * 0.8f);  
+            }
             
         }
     }

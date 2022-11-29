@@ -9,6 +9,9 @@ public class options : MonoBehaviour
     public TextMesh sensewyraz;
     public Slider mainvolume;
     public AudioClip testclip;
+    public Slider indieslider;
+    public Toggle indietog;
+    public Material indiemat;
     
     private void Awake()
     {
@@ -29,6 +32,20 @@ public class options : MonoBehaviour
         globalvariables.sense = sense.value;
         PlayerPrefs.SetFloat("sense", globalvariables.sense);
         PlayerPrefs.Save();
+    }
+
+    public void indiemode() 
+    {
+        indiemat.SetFloat("_Float", indieslider.value);
+        
+        if (indietog.isOn)
+        {
+            indiemat.SetFloat("_on", 1);
+        }
+        else
+        {
+            indiemat.SetFloat("_on", 0);
+        }
     }
 
     void Start()

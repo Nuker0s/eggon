@@ -80,9 +80,9 @@ public class cam3d : MonoBehaviour
         if (!pause)
         {
             Vector2 camrot = ms.delta.ReadValue();
-            horizontaldrive.Rotate(0, camrot.x * globalvariables.sense * Time.deltaTime, 0);
+            horizontaldrive.Rotate(0, camrot.x * globalvariables.sense * Time.unscaledDeltaTime, 0);
             //Debug.Log(camrot.x * sense);
-            float xrot = verticaldrive.eulerAngles.x + camrot.y * -globalvariables.sense * Time.deltaTime;
+            float xrot = verticaldrive.eulerAngles.x + camrot.y * -globalvariables.sense * Time.unscaledDeltaTime;
 
             if (xrot < 200)
             {

@@ -113,13 +113,21 @@ public class playermovement : MonoBehaviour
         {
             grounded = true;
             rb.drag = defaultdrag;
+            transform.SetParent(null);
         }
         else 
         {
 
             rb.drag = 0;
-
+            transform.SetParent(null);
             grounded = false;
+        }
+        foreach (Collider col in cols)
+        {
+            if (col.tag=="moving")
+            {
+                transform.SetParent(col.transform);
+            }
         }
     }
     public void makegroundchekvars()

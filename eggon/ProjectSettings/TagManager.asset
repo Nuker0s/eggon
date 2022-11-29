@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - sticky
+  - moving
   layers:
   - Default
   - TransparentFX

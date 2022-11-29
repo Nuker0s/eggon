@@ -46,7 +46,6 @@ public class playermanager : MonoBehaviour
         //Cursor.visible = false;
        //Cursor.lockState = CursorLockMode.Locked;
         checkpointchecker();
-
         if (restart.WasPressedThisFrame())
         {
             if (!dead)
@@ -117,6 +116,7 @@ public class playermanager : MonoBehaviour
                 {
                     currentcheckpoint = cp;
                 }
+                
             }
         }
     }

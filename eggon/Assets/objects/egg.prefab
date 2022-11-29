@@ -769,9 +769,10 @@ GameObject:
   - component: {fileID: 1135588234}
   - component: {fileID: 1676179651}
   - component: {fileID: 5122766095856057758}
+  - component: {fileID: 4737386419487600193}
   m_Layer: 7
   m_Name: egg
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -925,7 +926,8 @@ MonoBehaviour:
   groundcheckhitbox: {x: 0, y: 0, z: 0}
   jajoextents: {x: 0, y: 0, z: 0}
   meszkolider: {fileID: 417187015982195022}
-  sizecol: {x: 1.8, y: 0.33}
+  sizecol: {x: 1, y: 0.3}
+  jajocenter: {x: 0, y: 0, z: 0}
 --- !u!114 &1135588233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,6 +976,7 @@ MonoBehaviour:
   dmgoffset: 7
   dmgpower: 3.5
   pman: {fileID: 0}
+  dmgsound: {fileID: 8300000, guid: bc845f96e3f72be4f987676c87f98cd2, type: 3}
 --- !u!114 &1676179651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,12 +1002,13 @@ MonoBehaviour:
   cam: {fileID: 0}
   fired: 0
   catched: 0
-  maxraycastdistance: 15
+  maxraycastdistance: 10
   layers:
     serializedVersion: 2
     m_Bits: 1
   hitpos: {x: 0, y: 0, z: 0}
   joint: {fileID: 0}
+  connectedrb: {fileID: 0}
   maxdistancejoint: 15
   spring: 10000
   dampter: 3000
@@ -1109,6 +1113,29 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &4737386419487600193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114110124720436469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cc1e959d9559048aee7fd1a4faecda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowspeed: 0.3
+  pinput: {fileID: 1135588233}
+  slow:
+    m_Name: Slow
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f922f46d-f725-4808-bd7c-e02b2b3114ca
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &2135815209691867739
 GameObject:
   m_ObjectHideFlags: 0
